@@ -29,6 +29,9 @@ var browserSync = require('browser-sync');
 var pagespeed = require('psi');
 var reload = browserSync.reload;
 
+var less = require('gulp-less');
+var uglify = require('gulp-uglify');
+
 var node;
 
 // Lint JavaScript
@@ -55,6 +58,7 @@ gulp.task('images', function () {
 // Automatically Prefix CSS
 gulp.task('styles:css', function () {
   return gulp.src('predist/styles/**/*.css')
+    .pipe(uglify())
     .pipe($.autoprefixer('last 1 version'))
     .pipe(gulp.dest('public/styles'))
     .pipe(reload({stream: true}))
@@ -70,7 +74,7 @@ gulp.task('styles:components', function () {
       loadPath: ['predist/styles/components']
     }))
     .pipe($.autoprefixer('last 1 version'))
-    .pipe(gulp.dest('public/styles/components'))
+    .pipe(gulp.dest('.tmp/styles/components'))
     .pipe($.size({title: 'styles:components'}));
 });
 
@@ -82,9 +86,21 @@ gulp.task('styles:scss', function () {
       precision: 10,
       loadPath: ['predist/styles']
     }))
+    .pipe(uglify())
     .pipe($.autoprefixer('last 1 version'))
     .pipe(gulp.dest('.tmp/styles'))
     .pipe($.size({title: 'styles:scss'}));
+});
+
+gulp.task('styles:less', function() {
+   return gulp.src('predist/styles/**/*.less')
+       .pipe(less({
+           paths: ['predist/styles']
+       }))
+       .pipe(uglify())
+       .pipe($.autoprefixer('last 1 version'))
+       .pipe(gulp.dest('.tmp/styles'))
+       .pipe($.size({title: 'styles:less'}));
 });
 
 // Output Final CSS Styles
@@ -133,19 +149,15 @@ var restart = function() {
 // Watch Files For Changes & Reload
 gulp.task('serve', function () {
 
-
+    start();
   var bs = browserSync.init(null, {});
 
     bs.events.on('init', function(api) {
-       process.env.snippet = api.options.snippet;
-       start();
+
     });
 
     gulp.watch(['controllers/*.js', 'models/*.js'], restart);
-    gulp.watch(['public/templates/**/*.dust','public/templates/*.dust'], function() {
-        console.log('template change');
-        reload();
-    });
+    gulp.watch(['public/templates/**/*.dust','public/templates/*.dust'], reload);
 
   gulp.watch(['predist/**/*.html'], reload);
   gulp.watch(['predist/styles/**/*.{css,scss}'], ['styles']);
