@@ -134,15 +134,17 @@ var restart = function() {
 gulp.task('serve', function () {
 
     start();
-  browserSync.init({
-    server: {
-      baseDir: ['predist', '.tmp']
-    },
-    notify: false
-  });
+  var bs = browserSync.init(null, {});
 
-    gulp.watch(['controllers/**', 'models/**'], restart);
-    gulp.watch(['public/templates/**/*'], reload);
+    bs.events.on('init', function(api) {
+       console.log(api.options);
+    });
+
+    gulp.watch(['controllers/*.js', 'models/*.js'], restart);
+    gulp.watch(['public/templates/**/*.dust','public/templates/*.dust'], function() {
+        console.log('template change');
+        reload();
+    });
 
   gulp.watch(['predist/**/*.html'], reload);
   gulp.watch(['predist/styles/**/*.{css,scss}'], ['styles']);
