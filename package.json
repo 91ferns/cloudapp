@@ -21,6 +21,7 @@
     "requirejs": "^2.1.14"
   },
   "devDependencies": {
+    "browser-sync": "^1.0.0",
     "grunt": "^0.4.5",
     "grunt-config-dir": "^0.3.2",
     "grunt-contrib-clean": "^0.5.0",
@@ -31,7 +32,29 @@
     "grunt-dustjs": "^1.2.1",
     "grunt-localizr": "^0.1.0",
     "grunt-mocha-cli": "^1.9.0",
+    "gulp": "^3.6.0",
+    "gulp-autoprefixer": "^0.0.7",
+    "gulp-cache": "^0.1.1",
+    "gulp-csso": "^0.2.6",
+    "gulp-flatten": "^0.0.2",
+    "gulp-if": "^1.2.1",
+    "gulp-imagemin": "^0.6.0",
+    "gulp-jshint": "^1.5.3",
+    "gulp-less": "^1.2.3",
+    "gulp-load-plugins": "^0.5.0",
+    "gulp-minify-html": "^0.1.3",
+    "gulp-replace": "^0.3.0",
+    "gulp-ruby-sass": "^0.5.0",
+    "gulp-size": "^0.4.0",
+    "gulp-uglify": "^0.3.1",
+    "gulp-uncss": "^0.4.4",
+    "gulp-useref": "^0.4.3",
+    "jshint-stylish": "^0.2.0",
     "mocha": "^1.18.0",
+    "opn": "^0.1.1",
+    "psi": "^0.0.4",
+    "rimraf": "^2.2.8",
+    "run-sequence": "^0.3.6",
     "supertest": "^0.9.0"
   },
   "generator-kraken": {
@@ -40,5 +63,6 @@
     "css": "less",
     "js": "requirejs",
     "task": "grunt"
-  }
+  },
+  "private": true
 }
