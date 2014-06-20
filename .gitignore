@@ -2,4 +2,7 @@ node_modules
 .build
 .idea
 .idea/*
+public/styles
+public/images
+public/scripts
 
