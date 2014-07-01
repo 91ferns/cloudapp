@@ -133,11 +133,12 @@ var restart = function() {
 // Watch Files For Changes & Reload
 gulp.task('serve', function () {
 
-    start();
+
   var bs = browserSync.init(null, {});
 
     bs.events.on('init', function(api) {
-       console.log(api.options);
+       process.env.snippet = api.options.snippet;
+       start();
     });
 
     gulp.watch(['controllers/*.js', 'models/*.js'], restart);

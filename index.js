@@ -1,11 +1,11 @@
 'use strict';
 
-
 var kraken = require('kraken-js'),
     app = require('express')(),
     options = {
         onconfig: function (config, next) {
             //any config setup/overrides here
+            config.snippet = process.env.snippet || false;
             next(null, config);
         }
     },
@@ -16,5 +16,6 @@ app.use(kraken(options));
 
 
 app.listen(port, function (err) {
+    console.log(process.env.snippet);
     console.log('[%s] Listening on http://localhost:%d', app.settings.env, port);
 });

@@ -9,10 +9,9 @@
 <div id="wrapper">
 
     {+body /}
+tes t
 </div>
 <script data-main="/js/app" src="/components/requirejs/require.js"></script>
-<script type='text/javascript'>
-    document.write("<script async src='//HOST:3001/browser-sync-client.1.0.0.js'><\/script>".replace(/HOST/g, location.hostname));
-</script>
+{browsersync|s}
 </body>
 </html>

@@ -1,17 +1,22 @@
 'use strict';
 
 
-var IndexModel = require('../models/index');
+var IndexModel = require('../models/index'),
+    conf = require('nconf');
 
 
 module.exports = function (router) {
 
-    var model = new IndexModel();
+    var snippet = process.env.snippet || false;
+
+    console.log(snippet);
 
     router.get('/', function (req, res) {
-        
-        res.render('index', model);
-        
+
+        res.render('index', {
+          browsersync: snippet
+        });
+
     });
 
 };
