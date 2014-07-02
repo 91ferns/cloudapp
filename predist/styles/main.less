@@ -1,0 +1,47 @@
+/*
+ * Web Starter Kit
+ *
+ * Multi-screen layout styles for your page. Brought to you by the
+ * Web Starter Kit team.
+ *
+ */
+
+@import 'mixins.less';
+
+@import 'theme.less';
+@import 'mobile.less';
+
+@import 'global.less';
+
+@media all and (min-device-width: 1200px) {
+  @import 'desktop.less';
+}
+
+@media all and (min-device-width: 1200px) and (max-width: 800px) {
+  .app-bar .logo {
+    float: none;
+    width: 100%;
+    line-height: normal;
+    text-align: center;
+    padding-top: 36px;
+  }
+
+  .app-bar-container {
+    height: auto;
+  }
+
+  .app-bar-actions {
+    width: 100%;
+  }
+
+  .navdrawer-container {
+    padding: 0 16px;
+    overflow-y: auto;
+  }
+
+  .navdrawer-container li {
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: center;
+  }
+}
