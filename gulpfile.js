@@ -36,10 +36,11 @@ var node;
 
 // Lint JavaScript
 gulp.task('jshint', function () {
-    return gulp.src('app/scripts/**/*.js')
+    return gulp.src('predist/scripts/**/*.js')
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish'))
         .pipe($.jshint.reporter('fail'))
+        .pipe(gulp.dest('public/js'))
         .pipe(reload({stream: true, once: true}));
 });
 
@@ -105,7 +106,7 @@ gulp.task('styles:less', function () {
 });
 
 // Output Final CSS Styles
-gulp.task('styles', ['styles:components', 'styles:scss', 'styles:css']);
+gulp.task('styles', ['styles:components', 'styles:scss', 'styles:less', 'styles:css']);
 
 // Scan Your HTML For Assets & Optimize Them
 gulp.task('html', function () {

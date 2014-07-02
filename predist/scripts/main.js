@@ -16,6 +16,11 @@
  *  limitations under the License
  *
  */
+
+/**
+ * Create and attach event listeners to menu
+ */
+
 (function () {
   'use strict';
 
@@ -43,3 +48,7 @@
     }
   });
 })();
+
+/**
+ * Other stuff
+ */
