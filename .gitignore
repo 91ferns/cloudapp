@@ -5,8 +5,10 @@ node_modules
 .build
 .idea
 .idea/*
-public/styles
-public/images
-public/scripts
+
+public
+!public/templates
+
+
 *.log
 *.swp

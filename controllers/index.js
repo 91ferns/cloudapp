@@ -10,8 +10,7 @@ module.exports = function (router) {
 
 
     router.get('/', function (req, res) {
-        
-        res.render('index', model);
+        res.render('index', {browsersync: process.env.snippet || false});
         
     });
 
