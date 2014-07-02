@@ -49,14 +49,14 @@
     <header class="app-bar promote-layer">
       <div class="app-bar-container">
         <button class="menu"><img src="images/hamburger.svg" alt="menu"></button>
-        <h1 class="logo"><img src="/images/logo.png" alt="91ferns"></h1>
+        <h1 class="header-title"><span class="app-title">Patsy's</span><span class="page-title">Store</span></h1>
         <section class="app-bar-actions">
         <!-- Put App Bar Buttons Here -->
         </section>
       </div>
     </header>
     <nav class="navdrawer-container promote-layer">
-      <h4>Applications</h4>
+      <h4 class="logo"><img src="/images/logo.png" alt="91ferns"></h4>
       <ul>
         <li><a href="#hello">Hello</a></li>
         <li><a href="#get-started">Get Started</a></li>
