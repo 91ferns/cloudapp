@@ -1,0 +1,55 @@
+/** Larger Screens - desktops and tablets **/
+.app-bar {
+  position: fixed;
+}
+
+.app-bar-container {
+  display: block;
+  height: 130px;
+  max-width: 864px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  background-color: @primary;
+  position:static;
+  button.menu {
+    position:absolute;
+    left: 0;
+  }
+}
+
+.app-bar .logo {
+  float: left;
+  margin: 0;
+  padding: 0;
+  line-height: 60px;
+  font-size: 46px;
+  img {
+    width: 130px;
+  }
+}
+
+.app-bar-actions {
+  float: right;
+}
+
+.app-bar:after {
+  content: ' ';
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+
+main {
+  max-width: 864px;
+  z-index:2;
+  position:relative;
+  padding: 0;
+  top: 70px;
+  min-height: initial;
+  background-color: transparent;
+}
+
+body {
+  overflow-y: scroll;
+}
