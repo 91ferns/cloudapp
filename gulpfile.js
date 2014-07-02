@@ -163,7 +163,7 @@ gulp.task('serve', function () {
     gulp.watch(['controllers/*.js', 'models/*.js'], restart);
     gulp.watch(['public/templates/**/*.dust', 'public/templates/*.dust'], reload);
 
-    gulp.watch(['predist/**/*.html'], reload);
+    //gulp.watch(['predist/**/*.html'], reload);
     gulp.watch(['predist/styles/**/*.{css,scss,less}'], ['styles']);
     gulp.watch(['.tmp/styles/**/*.css'], reload);
     gulp.watch(['predist/scripts/**/*.js'], ['jshint']);
