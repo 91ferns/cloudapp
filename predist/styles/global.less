@@ -6,7 +6,9 @@ main {
   article {
     background-color: white;
     .box-shadow(0px 0px 5px 0px rgba(50, 50, 50, 0.75));
-    padding: 15px;
+    padding: 20px 15px;
+    margin-bottom: 7px;
+
   }
 }
 
@@ -37,6 +39,10 @@ main {
   }
 }
 
+.app-bar {
+  .box-shadow(0px 0px 5px 0px rgba(50, 50, 50, 0.75));
+}
+
 .navdrawer-container {
   .box-shadow(0px 0px 5px 0px rgba(50, 50, 50, 0.75));
   h4 {
@@ -45,5 +51,12 @@ main {
     }
     border-bottom: 2px solid @background;
 
+  }
+  ul {
+    & > li {
+      & > a {
+        color: @primary;
+      }
+    }
   }
 }

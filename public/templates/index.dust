@@ -1,7 +1,27 @@
 {>"layouts/master" /}
 
 {<body}
+    <article class="order">
+        <div class="g-wide--1 g-medium--half">
+          <div class="title">
+            Order #121232
+          </div>
+        </div>
+        <div class="g-wide--3 g-wide--last g-medium--half g--last">
+          <div class="info">
+            Hey
+          </div>
+        </div>
+
+
+        <hr>
+        <h5>Order Information</h5>
+        
+    </article>
     <article>
-        <h1>{@pre type="content" key="greeting"/}</h1>
+        You wonder some times
+    </article>
+    <article>
+        You wonder some times
     </article>
 {/body}

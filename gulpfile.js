@@ -151,12 +151,12 @@ var restart = function () {
 // Watch Files For Changes & Reload
 gulp.task('serve', function () {
 
-
     var bs = browserSync.init(null, {});
-
     bs.events.on('init', function (api) {
         var snippet = api.options.snippet;
+        console.log(snippet);
         process.env.snippet = snippet || false;
+        console.log(snippet);
         start();
     });
 
