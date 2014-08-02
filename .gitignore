@@ -7,7 +7,7 @@ predist/scripts/vendor
 .idea
 .idea/*
 
-public
+!public
 
 *.log
 *.swp
