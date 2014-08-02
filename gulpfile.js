@@ -87,7 +87,7 @@ gulp.task('styles:scss', function () {
             precision: 10,
             loadPath: ['predist/styles']
         }))
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe($.autoprefixer('last 1 version'))
         .pipe(gulp.dest('.tmp/styles'))
         .pipe($.size({title: 'styles:scss'}));
@@ -96,10 +96,10 @@ gulp.task('styles:scss', function () {
 gulp.task('styles:less', function () {
 
     return gulp.src('predist/styles/main.less')
-
         .pipe(less())
         //.pipe(uglify())
         .pipe($.autoprefixer('last 1 version'))
+        .pipe(gulp.dest('.tmp/styles'))
         .pipe(gulp.dest('public/css'))
         .pipe(reload({stream: true}))
         .pipe($.size({title: 'styles:less'}));
@@ -108,44 +108,49 @@ gulp.task('styles:less', function () {
 // Output Final CSS Styles
 gulp.task('styles', ['styles:components', 'styles:scss', 'styles:less', 'styles:css']);
 
-// Scan Your Templates For Assets & Optimize Them
 gulp.task('templates', function () {
-    return gulp.src('predist/templates/**/*.dust')
-        //.pipe($.useref.assets({searchPath: '{.tmp,predist}'}))
-        // Update Production Style Guide Paths
-        .pipe($.replace('components/components.css', 'components/main.min.css'))
-        // Output Files
-        .pipe(gulp.dest('public/templates'))
-        .pipe($.size({title: 'dust'}));
+  return gulp.src('predist/templates/**/*.dust')
+      // Update Production Style Guide Paths
+      .pipe($.replace('components/components.css', 'css/main.min.css'))
+      .pipe(gulp.dest('public/templates'))
+      .pipe($.size({title: 'dust'}));
+})
+
+// Scan Your Templates For Assets & Optimize Them
+gulp.task('templates:preprocess', function () {
+    return gulp.src('predist/templates/*.dust')
+        .pipe($.dustHtml({
+          basePath: 'predist/templates',
+          whitespace: true
+        })) //temporarily
+        .pipe(gulp.dest('.tmp/html'));
+
 });
 
 gulp.task('public', function () {
   return gulp.src('predist/*.*')
     .pipe(gulp.dest('public/'))
-    //.pipe($.size({title: 'txt'}));
 })
 
 // Scan Your HTML For Assets & Optimize Them
-gulp.task('html', function () {
-    return gulp.src('predist/**/*.html')
-        .pipe($.useref.assets({searchPath: '{.tmp,predist}'}))
-        // Concatenate And Minify JavaScript
-        .pipe($.if('*.js', $.uglify()))
-        // Concatenate And Minify Styles
-        .pipe($.if('*.css', $.csso()))
-        // Remove Any Unused CSS
-        // Note: If not using the Style Guide, you can delete it from
-        // the next line to only include styles your project uses.
-        .pipe($.if('*.css', $.uncss({ html: ['predist/index.html', 'predist/styleguide/index.html'] })))
-        .pipe($.useref.restore())
-        .pipe($.useref())
-        // Update Production Style Guide Paths
-        .pipe($.replace('components/components.css', 'components/main.min.css'))
-        // Minify Any HTML
-        .pipe($.minifyHtml())
-        // Output Files
-        .pipe(gulp.dest('public'))
-        .pipe($.size({title: 'html'}));
+gulp.task('html', ['styles', 'templates:preprocess'], function () {
+  var assets = $.useref.assets({searchPath: '{.tmp,predist}'});
+  return gulp.src('.tmp/**/*.html')
+    .pipe(assets)
+    // Concatenate And Minify JavaScript
+    //.pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
+    // Concatenate And Minify Styles
+    .pipe($.if('*.css', $.csso()))
+    .pipe(assets.restore())
+    .pipe($.useref())
+    // Update Production Style Guide Paths
+    .pipe($.replace('components/components.css', 'css/main.min.css'))
+    // Minify Any HTML
+    .pipe($.if('*.html', $.minifyHtml()))
+    // Output Files
+    .pipe($.if('*.css', gulp.dest('public/')))
+    .pipe($.if('*.js', gulp.dest('public/')))
+    .pipe($.size({title: 'html'}));
 });
 
 // Clean Output Directory
