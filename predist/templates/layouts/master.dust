@@ -79,7 +79,7 @@
     {+body /}
     </main>
 
-    <script data-main="/js/main.js" src="/components/requirejs/require.js"></script>
+    <script data-main="/js/main.js" src="/js/vendor/requirejs/require.js"></script>
 
     {browsersync|s}
 </body>

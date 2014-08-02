@@ -44,6 +44,13 @@ gulp.task('jshint', function () {
         .pipe(reload({stream: true, once: true}));
 });
 
+// Lint JavaScript
+gulp.task('scripts', function () {
+    return gulp.src('predist/scripts/vendor/**/*.js')
+        .pipe(gulp.dest('public/js/vendor'))
+        .pipe(reload({stream: true, once: true}));
+});
+
 // Optimize Images
 gulp.task('images', function () {
     return gulp.src('predist/images/**/*')
@@ -192,7 +199,7 @@ gulp.task('serve', function () {
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function (cb) {
-    runSequence('styles', ['jshint', 'templates', 'html', 'images', 'public'], cb);
+    runSequence('styles', ['jshint', 'scripts', 'templates', 'html', 'images', 'public'], cb);
 });
 
 // Run PageSpeed Insights
