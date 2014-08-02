@@ -108,6 +108,23 @@ gulp.task('styles:less', function () {
 // Output Final CSS Styles
 gulp.task('styles', ['styles:components', 'styles:scss', 'styles:less', 'styles:css']);
 
+// Scan Your Templates For Assets & Optimize Them
+gulp.task('templates', function () {
+    return gulp.src('predist/templates/**/*.dust')
+        //.pipe($.useref.assets({searchPath: '{.tmp,predist}'}))
+        // Update Production Style Guide Paths
+        .pipe($.replace('components/components.css', 'components/main.min.css'))
+        // Output Files
+        .pipe(gulp.dest('public/templates'))
+        .pipe($.size({title: 'dust'}));
+});
+
+gulp.task('public', function () {
+  return gulp.src('predist/*.*')
+    .pipe(gulp.dest('public/'))
+    //.pipe($.size({title: 'txt'}));
+})
+
 // Scan Your HTML For Assets & Optimize Them
 gulp.task('html', function () {
     return gulp.src('predist/**/*.html')
@@ -154,14 +171,12 @@ gulp.task('serve', function () {
     var bs = browserSync.init(null, {});
     bs.events.on('init', function (api) {
         var snippet = api.options.snippet;
-        console.log(snippet);
         process.env.snippet = snippet || false;
-        console.log(snippet);
         start();
     });
 
     gulp.watch(['controllers/*.js', 'models/*.js'], restart);
-    gulp.watch(['public/templates/**/*.dust', 'public/templates/*.dust'], reload);
+    gulp.watch(['predist/templates/**/*.dust', 'public/templates/*.dust'], ['templates', reload]);
 
     //gulp.watch(['predist/**/*.html'], reload);
     gulp.watch(['predist/styles/**/*.{css,scss,less}'], ['styles']);
@@ -172,7 +187,7 @@ gulp.task('serve', function () {
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function (cb) {
-    runSequence('styles', ['jshint', 'html', 'images'], cb);
+    runSequence('styles', ['jshint', 'templates', 'html', 'images', 'public'], cb);
 });
 
 // Run PageSpeed Insights

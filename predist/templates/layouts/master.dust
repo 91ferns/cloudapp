@@ -40,7 +40,7 @@
 
     <!-- build:css styles/components/main.min.css -->
     <link rel="stylesheet" href="css/h5bp.css">
-    <link rel="stylesheet" href="css/components/main.min.css">
+    <link rel="stylesheet" href="css/components/components.css">
     <link rel="stylesheet" href="css/main.css">
     <!-- endbuild -->
   </head>
