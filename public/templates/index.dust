@@ -1,27 +1,105 @@
 {>"layouts/master" /}
 
 {<body}
-    <article class="order">
-        <div class="g-wide--1 g-medium--half">
-          <div class="title">
-            Order #121232
-          </div>
-        </div>
-        <div class="g-wide--3 g-wide--last g-medium--half g--last">
-          <div class="info">
-            Hey
-          </div>
-        </div>
+<section class="home-container g-wide--3 g-medium--full">
+    <article id="services">
+        <h2>Services</h2>
 
+        <table class="table-4">
+            <colgroup>
+                <col span="1">
+                <col span="1">
+                <col span="1">
+                <col span="1">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Domain Name</th>
+                    <th>Host</th>
+                    <th>Description</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+              {#services}
+                <tr>
+                    <td data-th="Domain"><strong>{domain}</strong></td>
+                    <td data-th="Host">{host}</td>
+                    <td data-th="Description">{description}</td>
+                    <td data-th="Admin">
+                      <a href="#ignore-click" class="button--primary">Use our tool</a>
+                    </td>
+                </tr>
+              {/services}
+            </tbody>
+        </table>
 
-        <hr>
-        <h5>Order Information</h5>
-        
     </article>
-    <article>
-        You wonder some times
+
+    <article class="apps">
+        <h2>Applications</h2>
+        <dl>
+        {#applications}
+          <dt>{site}</dt>
+          <dd>
+            <ul>
+            {#apps}
+              <li>{name}</li>
+            {/apps}
+            </ul>
+          </dd>
+        {/applications}
+        </dl>
     </article>
-    <article>
-        You wonder some times
+
+    <article class="support">
+        <h2>Support</h2>
+        <table class="table-4">
+            <colgroup>
+                <col span="1">
+                <col span="1">
+                <col span="1">
+                <col span="1">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Request #</th>
+                    <th>Subject</th>
+                    <th>Last Response</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+              {#services}
+                <tr>
+                    <td data-th="Request"><a href="#">{domain}</a></td>
+                    <td data-th="Subject">{host}</td>
+                    <td data-th="Response">{description}</td>
+                    <td data-th="Status">In Progress</td>
+                </tr>
+              {/services}
+            </tbody>
+        </table>
     </article>
+
+</section>
+
+<section id="sidebar" class="g-wide--1 g-wide--last g-medium--full">
+    <aside class="billing">
+      <h2>Billing</h2>
+      <a href="#ignore-click" class="button--primary">Use our tool</a>
+    </aside>
+
+    <aside class="data">
+      <h2>Data Usage</h2>
+    </aside>
+
+    <aside class="quick-links">
+      <h2>Quick Links</h2>
+      <ul>
+        <li><a href="#">Patsy's Login</a></li>
+      </ul>
+    </aside>
+</section>
+
 {/body}

@@ -3,12 +3,64 @@ body {
 }
 
 main {
-  article {
+  padding-left:15px;
+  padding-right:15px;
+  article, aside {
     background-color: white;
     .box-shadow(0px 0px 5px 0px rgba(50, 50, 50, 0.75));
     padding: 20px 15px;
     margin-bottom: 7px;
 
+  }
+  h2 {
+    padding-top:.2em;
+    font-size:26px;
+  }
+
+  /* now tables */
+  table {
+    thead {
+      background: transparent;
+      tr {
+        th {
+          font-size: 14px;
+          font-weight: bold;
+          text-align:left;
+          color: black;
+          padding-left: 13px;
+          border: 0px;
+        }
+      }
+    }
+
+    /* tbody */
+    tbody {
+      background: transparent;
+      tr {
+        background: transparent;
+        td {
+          border: 0px !important;
+          font-size: 13px;
+          @media (min-width: 1200px) {
+            padding: 6px 13px;
+          }
+          vertical-align:top;
+          &:before {
+            color: @backgroundDark;
+            background-color: transparent;
+            border: 0;
+            font-size: 12px;
+            font-weight: bold;
+          }
+        }
+
+        &:nth-child(odd) {
+          &:before, & {
+            background: @background;
+          }
+        }
+      }
+    }
   }
 }
 

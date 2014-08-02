@@ -49,9 +49,21 @@
     <header class="app-bar promote-layer">
       <div class="app-bar-container">
         <button class="menu"><img src="images/hamburger.svg" alt="menu"></button>
-        <h1 class="header-title"><span class="app-title">Patsy's</span><span class="page-title">Store</span></h1>
+        <h1 class="header-title">
+          <span class="app-title">Home</span><!--span class="page-title">Store</span-->
+        </h1>
         <section class="app-bar-actions">
         <!-- Put App Bar Buttons Here -->
+          <div class="app-button">
+            <button>
+              Ho
+            </button>
+            <!--div class="dropdown">
+              <ul>
+                <li>Test</li>
+              </ul>
+            </div-->
+          </div>
         </section>
       </div>
     </header>
