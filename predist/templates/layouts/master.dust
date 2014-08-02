@@ -38,6 +38,7 @@
     <title>{+title /}</title>
 
     <!-- build:css css/main.min.css -->
+    <link rel="stylesheet" href="styles/h5bp.css">
     <link rel="stylesheet" href="styles/components/components.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->

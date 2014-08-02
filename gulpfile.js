@@ -111,7 +111,9 @@ gulp.task('styles', ['styles:components', 'styles:scss', 'styles:less', 'styles:
 gulp.task('templates', function () {
   return gulp.src('predist/templates/**/*.dust')
       // Update Production Style Guide Paths
-      .pipe($.replace('components/components.css', 'css/main.min.css'))
+      .pipe($.replace(/[<][!]-+ *build:css.+-->/, '<link href="/css/main.min.css" rel="stylesheet" type="text/css">'))
+      .pipe($.replace(/<link rel="stylesheet" href="[^"]+">/g, ''))
+      .pipe($.replace('<!-- endbuild -->', ''))
       .pipe(gulp.dest('public/templates'))
       .pipe($.size({title: 'dust'}));
 })
@@ -143,8 +145,6 @@ gulp.task('html', ['styles', 'templates:preprocess'], function () {
     .pipe($.if('*.css', $.csso()))
     .pipe(assets.restore())
     .pipe($.useref())
-    // Update Production Style Guide Paths
-    .pipe($.replace('components/components.css', 'css/main.min.css'))
     // Minify Any HTML
     .pipe($.if('*.html', $.minifyHtml()))
     // Output Files
