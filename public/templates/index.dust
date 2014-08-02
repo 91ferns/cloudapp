@@ -26,8 +26,8 @@
                     <td data-th="Domain"><strong>{domain}</strong></td>
                     <td data-th="Host">{host}</td>
                     <td data-th="Description">{description}</td>
-                    <td data-th="Admin">
-                      <a href="#ignore-click" class="button--primary">Use our tool</a>
+                    <td data-th="Admin" class="admin">
+                      <a href="#ignore-click" class="button button--primary">Open</a>
                     </td>
                 </tr>
               {/services}
