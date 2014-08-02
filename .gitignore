@@ -7,10 +7,6 @@ predist/scripts/vendor
 .idea
 .idea/*
 
-public
-!public/templates
-!public/*.txt
-
 
 *.log
 *.swp
