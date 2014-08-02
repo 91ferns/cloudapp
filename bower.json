@@ -17,9 +17,12 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.19",
     "dustjs-linkedin-helpers": "^1.1.1",
     "dustjs-linkedin": "^2.0.3",
-    "requirejs": "^2.1.11"
+    "requirejs": "^2.1.11",
+    "jquery": "~2.1.1"
+  },
+  "resolutions": {
+    "jquery": "~2.1.1"
   }
 }

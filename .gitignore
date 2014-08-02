@@ -1,4 +1,5 @@
 node_modules
+predist/scripts/vendor
 .tmp
 .sass-cache
 
