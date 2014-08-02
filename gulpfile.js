@@ -36,7 +36,7 @@ var node;
 
 // Lint JavaScript
 gulp.task('jshint', function () {
-    return gulp.src('predist/scripts/**/*.js')
+    return gulp.src('predist/scripts/*.js')
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish'))
         .pipe($.jshint.reporter('fail'))
